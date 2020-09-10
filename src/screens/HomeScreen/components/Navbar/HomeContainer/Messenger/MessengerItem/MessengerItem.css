@@ -1,0 +1,36 @@
+.messengerItem {
+    display: flex;
+    cursor: pointer;
+    font-size: inherit;
+    margin: 1rem;
+    border-radius: 2rem;
+    background-color: #fafafa;
+}
+.messengerItem:hover {
+    background-color: #e6e6e6;
+}
+.messengerItem h4 {
+    margin: 1rem;
+}
+.messengerItem p {
+    font-size: 1.4rem;
+    margin: 1rem;
+}
+.messengerItem__avatar {
+    flex: 1 1 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.messengerItem__avatar img {
+    border-radius: 50%;
+}
+.messengerItem__info {
+    flex: 3 1 9rem;
+}
+.messengerItem__time {
+    flex: 1 1 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

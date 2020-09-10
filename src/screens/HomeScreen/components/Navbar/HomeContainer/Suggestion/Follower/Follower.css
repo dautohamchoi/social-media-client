@@ -1,0 +1,45 @@
+.follower {
+    display: flex;
+    margin: 1rem 1.5rem;
+}
+.follower__avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.follower__avatar img {
+    border-radius: 50%;
+}
+.follower__info {
+    flex: 3 1 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.follower__info .link-control {
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    margin: .5rem;
+}
+.follower__info p {
+    margin: .5rem;
+    font-size: 1.4rem;
+    color: gray;
+}
+.follower__button {
+    display: flex;
+    align-items: center;
+}
+.follower__button button {
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border-radius: 2rem;
+}
+.follower__button button:hover {
+    background-color: #c0c0c0;
+}
+.follower__button button:focus {
+    outline: none;
+}

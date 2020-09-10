@@ -1,0 +1,38 @@
+.heroTitle {
+    display: flex;
+    width: 100%;
+}
+.heroTitle__container {
+    display: flex;
+    width: inherit;
+}
+.heroTitle__container h4 {
+    margin-right: 2rem;
+}
+.heroTitle_buttonList {
+    display: flex;
+}
+.heroTitle__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+}
+.heroTitle__button>button {
+    padding: .8rem 2.4rem;
+    cursor: pointer;
+    background-color: var(--blue);
+    border-radius: .5rem;
+    border: .1rem solid var(--blue);
+    color: #ffffff;
+    font-weight: 600;
+}
+.heroTitle__button>button:hover{
+    filter: brightness(1.2);
+}
+.heroTitle__button>button:active{
+    transform: scale(0.93);
+}
+.heroTitle__button>button:focus{
+    outline: none;
+}

@@ -1,0 +1,21 @@
+.heroNavbar {
+    display: flex;
+    margin: 1rem 0;
+}
+
+.heroNavbar__item>a {
+    text-decoration: none;
+    color: inherit;
+    padding: 1.1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;     
+}
+.heroNavbar__item>a:hover {
+    color: var(--lightcoral);
+}
+.heroNavbar__item>a:active {
+    border-top: .3rem solid var(--lightcoral);
+}
+.heroNavbar__item>a>span {
+    padding: .5rem;
+}

@@ -1,13 +1,30 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*, *::before, *::after {
+  box-sizing: border-box;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+  font-family: Helvetica;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --navbar-height: 5rem;
+  --navbar-bg-color: #ffffff;
+  --content-bg-color: #dddce1;
+  --lightcoral: #ff8686;
+  --blue: #0093f5;
+  --bg-gray: rgba(240, 240, 240, 0.8);
+}
+.App {
+  min-height: 100vh;
+}
+/* HomeScreen  */
+.HomeScreen main {
+  position: relative;
+  top: var(--navbar-height);
+  height: 100%;
 }

@@ -1,0 +1,8 @@
+.emptyPost {
+    text-align: center;
+    margin: 2rem;
+    height: 100%;
+}
+.emptyPost__img img {
+    max-height: 15rem;
+}

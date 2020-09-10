@@ -1,0 +1,101 @@
+.heroEdit__container {
+    width: 50rem;
+    border: .1rem solid black;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    position: relative;
+    background-color: #ffffff;
+}
+.hero__wrap {
+    position: relative;
+}
+.heroEdit__header {
+    display: flex;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: .1rem solid #c0c0c0;
+}
+.heroEdit__header__info {
+    margin-left: 3rem;
+    margin-top: 3rem;
+}
+.heroEdit__header__info h3,
+.heroEdit__header__info p {
+    padding: .5rem;
+    margin: 0;
+}
+.heroEdit__header__info button {
+    color: var(--blue);
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+.heroEdit__header>aside {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.heroEdit__header>aside>button {
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    padding: .7rem 1.2rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+.heroEdit__header>aside>button:hover {
+    background-color: rgb(194, 194, 194)
+}
+.heroEdit__header>aside>button:active {
+    transform: scale(0.93);
+}
+.heroEdit__header>aside>button:focus {
+    outline: none;
+}
+
+/* FORM */
+.heroEdit__container form {
+    display: flex;
+    flex-direction: column;
+}
+.heroEdit__container form>label {
+    margin: 1rem 0 .5rem 0;
+}
+.heroEdit__container form>input,
+.heroEdit__container form>textarea {
+    padding: .5rem;
+    border-radius: .5rem;
+    border: .1rem solid #c0c0c0;
+    background-color: #fafafa;
+    font-family: inherit;
+}
+.heroEdit__container form>input:focus,
+.heroEdit__container form>textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+}
+.heroEdit__container form>textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+.heroEdit__container form>div {
+    color: red;
+    font-size: 1.2rem;
+    margin: .2rem 0 .4rem 0;
+}
+.heroEdit__container form>button {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #ff8686;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: .5rem;
+    border: none;
+}
+.heroEdit__container form>button:hover {
+    background-color: lightcoral;
+} 
+

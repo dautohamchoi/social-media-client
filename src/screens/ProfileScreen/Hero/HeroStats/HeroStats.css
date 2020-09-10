@@ -1,0 +1,16 @@
+.heroStats {
+    display: flex;
+}
+.heroStats>ul {
+    padding: 0;
+    margin: 2rem 0;
+    display: flex;
+}
+.heroStats>ul>li {
+    list-style-type: none;
+    margin-right: 3rem;
+}
+.heroStats>ul>li>a {
+    text-decoration: none;
+    color: inherit;
+}

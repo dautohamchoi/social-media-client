@@ -1,0 +1,32 @@
+.postEdit>ul {
+    padding: .5rem;
+    margin: 0;
+    background-color: #ffffff;
+    width: 20rem;
+    border-radius: .5rem;
+    border: .1rem solid #e4e2e2;
+}
+.postEdit>ul>li{
+    list-style-type: none;
+    padding: 1rem .5rem;
+    border-radius: .5rem;
+}
+.postEdit>ul>li:hover {
+    background-color: #e4e2e2;
+    cursor: pointer;
+}
+.postEdit__link {
+    text-decoration: none;
+    color: inherit;
+}
+.postEdit__item {
+    display: flex;
+}
+.postEdit__icon {
+    flex-basis: 5rem;
+    text-align: center;
+    color: #858383;
+}
+.postEdit__feature {
+    flex-basis: 15rem;
+}

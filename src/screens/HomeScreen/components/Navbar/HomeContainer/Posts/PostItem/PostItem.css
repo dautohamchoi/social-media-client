@@ -1,0 +1,115 @@
+.postItem {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin: 1.5rem 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 2rem;
+    border: .1rem solid #c0c0c0;
+    box-shadow: 4px 8px 11px -2px #c7c5d8;
+    -webkit-box-shadow: 4px 8px 11px -2px #c7c5d8;
+}
+.postItem button {
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+}
+.postItem__icon {
+    color: #969696;
+}
+.postItem__header {
+    display: flex;
+}
+.postItem__header__info {
+    display: flex;
+}
+.postItem__header__avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+.postItem__header__info h4, 
+.postItem__header__info p {
+    margin: .5rem;
+}
+.postItem__header__info p {
+    font-size: 1.3rem;
+    padding: 0;
+    color: #808080;
+}
+.postItem__header__info a {
+    text-decoration: none;
+    color: #111111;
+}
+.postItem__header__info a:hover {
+    color: gray;
+}
+.postItem__header__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.postItem__footer {
+    display: flex;
+    justify-content: space-between;
+}
+.postItem__footer button {
+    padding: 1rem 1.5rem;
+    border-radius: .5rem;
+    background-color: white;
+}
+.postItem__footer button:hover {
+    background-color: #c0c0c0;
+}
+.postItem__footer button:focus {
+    outline: none;
+}
+.postItem__footer button:active{
+    transform: scale(0.93);
+}
+.postItem__button__edit {
+    position: absolute;
+    top: 1.8rem;
+    right: 2.2rem;
+}
+.postItem__button__edit button {
+    padding: 1.2rem;
+    border-radius: 50%;
+    background-color: white;
+}
+.postItem__button__edit button:hover {
+    background-color: #e4e2e2;
+}
+.postItem__button__edit button:focus {
+    outline: none;
+}
+
+.postItem__edit {
+    position: absolute;
+    z-index: 10;
+    top: 6.1rem;
+    right: 1.5rem;
+    box-shadow: 0 0 11px -2px #c7c5d8;
+    -webkit-box-shadow: 0 0 11px -2px #c7c5d8;
+    border-radius: .5rem;
+}
+
+.postItem__edit__update {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background-color: rgba(240, 240, 240, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.postItem__edit__update__container {
+    min-width: 60rem;
+    width: 80rem;
+}

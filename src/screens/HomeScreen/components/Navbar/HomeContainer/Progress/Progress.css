@@ -1,0 +1,21 @@
+.progress {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 85vh;
+    left: 2vw;
+    background-color: rgba(123, 237, 159, 0.5);
+    border: .1rem solid #44bd32;
+    transform: translateY(10rem);
+    transition: all .5s ease-in;
+    opacity: 0;
+}
+.progress__content {
+    text-align: center;
+    padding: 1rem 2rem;
+    color: #44bd32;
+}
+.progress.active {
+    transform: translateY(0rem);
+    opacity: 1;
+}

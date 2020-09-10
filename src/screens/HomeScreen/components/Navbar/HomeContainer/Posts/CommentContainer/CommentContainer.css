@@ -1,0 +1,15 @@
+.commentContainer {
+    border-top: .1rem solid #c0c0c0;
+}
+.commentContainer__title {
+    margin: .8rem .5rem;
+}
+.commentContainer__title>p,
+.commentContainer__title>a
+{
+    font-size: 1.4rem;
+    color: gray;
+}
+.commentContainer__title>a {
+    text-decoration: none;
+}

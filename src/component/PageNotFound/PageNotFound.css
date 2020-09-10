@@ -1,0 +1,39 @@
+.pageNotFound {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    height: 100%;
+}
+.pageNotFound__container {
+    text-align: center;
+    height: 100%;
+}
+
+.pageNotFound__img img {
+    max-width: 15rem;
+}
+.pageNotFound__btn {
+    margin: 1rem;
+}
+.pageNotFound__btn button { 
+    padding: 1rem 2.4rem;
+    border-radius: .5rem;
+    background-color: var(--blue);
+    border: .1rem solid var(--blue);
+    cursor: pointer;
+}
+.pageNotFound__btn button:hover { 
+    filter: brightness(1.2);
+}
+.pageNotFound__btn button:active { 
+    transform: scale(0.93);
+}
+.pageNotFound__btn button:focus { 
+    outline: none;
+}
+.pageNotFound__btn button>a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+
+}

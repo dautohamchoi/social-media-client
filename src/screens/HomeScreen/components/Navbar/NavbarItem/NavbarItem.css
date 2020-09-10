@@ -1,0 +1,19 @@
+.navbarItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 2rem;
+}
+.navbarItem button {
+    background-color: inherit;
+    cursor: pointer;
+    border: none;
+    font-size: 2rem;
+}
+.navbarItem button:focus {
+    outline: none;
+    color: lightslategray;
+}
+.navbarItem button>img {
+    border-radius: 50%;
+}

@@ -1,0 +1,79 @@
+.comment {
+    position: relative;
+}
+.comment__newsFeed {
+    display: flex;
+}
+.comment__avatar {
+    margin-right: .5rem;
+    margin-top: .5rem;
+}
+.comment__content {
+    flex: 8 1 30rem;
+    margin-right: .6rem;
+    padding-left: .3rem;
+}
+.comment__content a, 
+.comment__content>span {
+    margin: 1rem .5rem .5rem 0;
+    font-size: 1.4rem;
+}
+.comment__content a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #111;
+}
+.comment__content a:hover {
+    color: gray;
+}
+.comment button {
+    background-color: transparent;
+}
+.comment button:focus{
+    outline: none;
+}
+.comment button:active{
+    transform: scale(0.93);
+}
+.comment__content__footer {
+    padding: 1rem 1rem 1rem .5rem;
+    font-size: 1.3rem;
+    color: gray;
+}
+.comment__content__likeCount {
+    font-weight: 550;
+    margin-left: .5rem;
+}
+
+/* DETAIL POST COMMENTS */
+.comment__detail {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* EDIT  */
+.comment__edit_btn {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    right: 2.5rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    padding: .5rem .2rem;
+    background-color: rgba(240, 240, 240, 0.6);
+}
+.comment__edit {
+    position: absolute;
+    left: -2rem;
+    margin-top: .5rem;
+    z-index: 5;
+    background-color: #ffffff;
+}
+.comment__update {
+    border-bottom: .1rem solid #c0c0c0;
+}
+.comment__update__cancelBtn {
+    color: #74b9ff;
+    margin-bottom: .5rem;
+}

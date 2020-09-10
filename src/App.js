@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomeScreen from './screens/HomeScreen/HomeScreen';
+import { BrowserRouter, Route } from 'react-router-dom';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
+import RegisterScreen from './screens/LoginScreen/RegisterScreen';
+import PostScreen from './screens/PostScreen/PostScreen';
+import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 
-function App() {
+
+function App(props) {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Route path="/" exact={true} component={HomeScreen} />
+        <Route path="/login" component={LoginScreen} />
+        <Route path="/register" component={RegisterScreen} />
+        <Route path="/posts/:id" component={PostScreen} />
+        <Route path="/:username" exact={true} component={ProfileScreen} />
+      </BrowserRouter>
     </div>
   );
 }

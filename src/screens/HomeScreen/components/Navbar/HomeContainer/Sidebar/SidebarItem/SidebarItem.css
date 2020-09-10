@@ -1,0 +1,31 @@
+.sidebarItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.sidebarItem:hover {
+    background-color: #c0c0c0;
+}
+.sidebarItem__content {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+.sidebarItem__content.chosen {
+    color: rgb(255, 134, 134);
+    font-weight: 600;
+}
+.sidebarItem__content__icon {
+    flex: 1 1 3rem;
+    display: flex;
+    justify-content: center;
+}
+.sidebarItem__content__title {
+    flex: 4 1 12rem;
+    margin-left: 1rem;
+}
