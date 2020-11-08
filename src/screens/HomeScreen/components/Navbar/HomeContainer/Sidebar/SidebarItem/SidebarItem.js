@@ -1,6 +1,6 @@
 import React from 'react'
 import './SidebarItem.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 function SidebarItem(props) {
     return (
@@ -19,6 +19,7 @@ function SidebarItem(props) {
                     {props.title}
                 </span>
             </Link>
+            
         </div>
     )
 }

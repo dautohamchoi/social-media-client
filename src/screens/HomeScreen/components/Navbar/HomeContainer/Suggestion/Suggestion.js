@@ -1,49 +1,87 @@
-import React from 'react'
-import Follower from './Follower/Follower';
+import React, { useEffect, useState } from 'react'
 import './Suggestion.css';
-import { Link } from 'react-router-dom';
+import Recommend from './Recommend/Recommend';
+import { ADD_FOLLOWER, REMOVE_FOLLOWER } from '../../../../../../queries/followQuery';
+import { useMutation, useQuery } from '@apollo/client';
+import { GET_MY_FOLLOWING_PEOPLE, GET_RECOMMENDED_USERS } from '../../../../../../queries/userQuery';
 
-function Suggestion() {
+function Suggestion(props) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const { pathname } = window.location;
+    const [openSuggestion, setOpenSuggestion] = useState(pathname === '/suggested');
+   
+    
+    const { loading, error, data } = useQuery(GET_RECOMMENDED_USERS, 
+        {
+            variables: {
+                userId: userInfo.id
+            }
+        },
+        {
+            fetchPolicy: "network-only"
+        }
+    );
+
+    const { loading: loadingMyFollowingPeople, 
+        error: errorMyFollowingPeople, 
+        data: dataMyFollowingPeople,
+    refetch: refetchMyFollowingPeople } = useQuery(GET_MY_FOLLOWING_PEOPLE, {
+        variables: { name: userInfo.name }
+    }, { fetchPolicy: "network-only" });
+
+    const [addFollower] = useMutation(ADD_FOLLOWER, {
+        onCompleted: () => {
+            refetchMyFollowingPeople();
+        }
+    })
+    const [removeFollower] = useMutation(REMOVE_FOLLOWER, {
+        onCompleted: () => {
+            refetchMyFollowingPeople();
+        }
+    });
+
+    // followerName: username
+    const addFollowClick = (userId, followerName) => {
+        addFollower({ variables: { 
+            userId, 
+            followerName 
+        }});
+    }
+    const removeFollowClick = (followId) => {
+        removeFollower({ variables: { 
+            followId
+        }});
+    }
+
+   
+
+    if (loading) return <h4>Loading...</h4>;
+    if (error) return <div>{error}</div>;
     return (
         <div className="suggestion">
-            <div className="suggestion__top">
-                <div className="suggestion__top__title">
-                    <h3>Người nổi tiếng</h3>
-                    <div className="suggestion__title__line">
-                        <hr></hr>
+            {
+                loadingMyFollowingPeople ? <h4>Loading...</h4>
+                : errorMyFollowingPeople ? <div>{errorMyFollowingPeople}</div>
+                :
+                <Recommend 
+                    users={openSuggestion ? data.recommendedUsers : data.recommendedUsers.slice(0, 3)} 
+                    title="Gợi ý cho bạn" 
+                    addFollowClick={addFollowClick}
+                    removeFollowClick={removeFollowClick}
+                    dataMyFollowingPeople={dataMyFollowingPeople.user.followingPeople}
+                />
+            }
+            {
+                !openSuggestion && 
+                <div className="suggestion__friends">
+                    <div>
+                        <img src="/friends.svg" alt="friends"/>
+                    </div>
+                    <div>
+                        <button>Kết nối bạn bè</button>
                     </div>
                 </div>
-                <div>
-                    <Follower />
-                    <Follower />
-                </div>
-                <div className="suggestion__title__button">
-                    <Link to="#" className="link-control">Xem thêm</Link>
-                </div>
-            </div>
-            <div className="suggestion__top">
-            <div className="suggestion__top__title">
-                    <h3>Gợi ý cho bạn</h3>
-                    <div className="suggestion__title__line">
-                        <hr></hr>
-                    </div>
-                </div>
-                <div>
-                    <Follower />
-                    <Follower />
-                </div>
-                <div className="suggestion__title__button">
-                    <Link to="#" className="link-control">Xem thêm</Link>
-                </div>
-            </div>
-            <div className="suggestion__friends">
-                <div>
-                    <img src="/friends.svg" alt="friends"/>
-                </div>
-                <div>
-                    <button>Kết nối bạn bè</button>
-                </div>
-            </div>
+            }
         </div>
     )
 }

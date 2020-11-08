@@ -69,14 +69,19 @@
     justify-content: space-between;
     border-top: .2rem solid #c0c0c0;
 }
-.status__features button {
+
+.status__features button,
+.status__features__upload  {
     border: none;
     border-radius: 3rem;
     cursor: pointer;
-    margin-top: 1.5rem;
+    margin-top: .5rem;
 }
 .status__features__upload {
     padding: 1rem 1.5rem;
+    background-color: #d4d2e0;
+    display: block;
+    font-size: 1.35rem;
 }
 .status__features__upload:hover {
     background-color: #c0c0c0;
@@ -88,4 +93,19 @@
 }
 .status__features__post:hover {
     filter: brightness(1.2);
+}
+/* UPLOAD */
+.status__features input[type="file"] {
+    display: none; 
+}
+.status__imageContainer {
+    text-align: center;
+}
+.status__imagePost {
+    max-width: 100%;
+}
+.status__features__note {
+    font-size: 1.3rem;
+    font-style: italic;
+    margin-top: .5rem;
 }

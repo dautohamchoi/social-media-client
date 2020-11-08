@@ -6,9 +6,6 @@
     position: relative;
     background-color: #ffffff;
 }
-.hero__wrap {
-    position: relative;
-}
 .heroEdit__header {
     display: flex;
     margin-bottom: 1rem;

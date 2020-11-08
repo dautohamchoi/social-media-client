@@ -2,11 +2,26 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './LoginScreen.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { REGISTER_USER } from '../../queries/userQuery';
+import { useMutation } from '@apollo/client';
 
 
 function RegisterScreen() {
-    
+    const history = useHistory();
+    const [userRegister, { loading, error }] = useMutation(REGISTER_USER, {
+        onCompleted ({ userRegister }) {
+            // Cookie.set('userInfo', userLogin);
+            if (userRegister.id) {
+                alert('Tạo tài khoản thành công.')
+                history.push('/accounts/login');
+            } else {
+                alert('Thất bại trong việc tạo tài khoản.')
+            }
+            if (loading) return <p>Loading...</p>;  
+            if (error) return <p>An error occurred</p>;
+        }
+    });
 
     return (
         <div className="loginScreen">
@@ -22,16 +37,21 @@ function RegisterScreen() {
                         .required('\u2715 Vui lòng nhập Email'),
                         username: Yup.string()
                         .min(3, 'Phải chứa ít nhất 3 ký tự')
-                        .required('\u2715 Vui lòng nhập tên người dùng'),
+                        .required('\u2715 Vui lòng nhập tên người dùng')
+                        .matches(/^\w+$/, 'Chỉ có thể chứa dấu gạch dưới')
+                        .lowercase('Chỉ sử dụng chữ viết thường'),
                         password: Yup.string()
                         .min(3, 'Phải chứa ít nhất 3 ký tự')
                         .required('\u2715 Vui lòng nhập mật khẩu'),
                     })}
                     onSubmit={(values, { setSubmitting }) => {
-                        setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
+                        userRegister({ variables: {
+                            email: values.email,
+                            name: values.username,
+                            password: values.password 
+                          } 
+                        })
                         setSubmitting(false);
-                        }, 400);
                     }}
                     >
                     <Form>
@@ -50,7 +70,7 @@ function RegisterScreen() {
                     </Form>
                 </Formik>
                 <div>
-                    <p>Bạn đã có tài khoản ?  <Link to="/login">Đăng nhập</Link>
+                    <p>Bạn đã có tài khoản ?  <Link to="/accounts/login">Đăng nhập</Link>
                     </p>
                 </div>
             </div>

@@ -1,28 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './HeroStats.css';
 
 
-function HeroStats({ user }) {
+function HeroStats({ user, handleFollowersClick, handleFollowingPeopleClick }) {
     return (
         <div className="heroStats">
             <ul>
                 <li>
-                    <span>{user.posts.length}</span>
-                    <span> bài viết</span>
+                    <span>{user.posts.length} bài viết</span>
                 </li>
                 <li>
-                    <Link>
-                        <span>6789 </span>
+                    <button onClick={handleFollowersClick}>
+                        <span>{user.followers.length} </span>
                         người theo dõi
-                    </Link>
+                    </button>
                 </li>
                 <li>
-                    <Link>
+                    <button onClick={handleFollowingPeopleClick}>
                         Đang theo dõi
-                        <span> 999 </span>
+                        <span> {user.followingPeople.length} </span>
                         người dùng
-                    </Link>
+                    </button>
                 </li>
             </ul>
         </div>

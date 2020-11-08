@@ -19,13 +19,13 @@ import { ADD_FOLLOWER, REMOVE_FOLLOWER } from '../../../queries/followQuery';
 import HeroFollowing from './HeroFollowing/HeroFollowing';
 import HeroFollowers from './HeroFollowers/HeroFollowers';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { GET_USER_POSTS } from '../../../queries/postQuery';
+import { GET_SAVED_POSTS } from '../../../queries/postQuery';
 
 
 
-function Hero() {
+function HeroSaved() {
     const { pathname } = window.location;
-    const username = pathname.slice(1);
+    const username = pathname.slice(1).replace("/saved", "");
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -40,11 +40,11 @@ function Hero() {
         }
     }, { fetchPolicy: "network-only" });
 
-    const { loading, error, data, refetch, fetchMore } = useQuery(GET_USER_POSTS, {
+    const { loading, error, data, refetch, fetchMore } = useQuery(GET_SAVED_POSTS, {
         variables: {  
-            username: username,
+            userId: userInfo.id,
             skip: 0,
-            limit: 3  
+            limit: 4,
         }
     }, { fetchPolicy: "network-only" });
 
@@ -71,7 +71,7 @@ function Hero() {
             refetchMyFollowingPeople();
             setOpenFollowing(false);
         }
-    });
+    })
 
     const handleEditClick = () => {
         if (openEdit) return setOpenEdit(false);
@@ -106,13 +106,13 @@ function Hero() {
     const onLoadMore = () => {
         fetchMore({
             variables: {
-                skip: data.userPosts.length
+                skip: data.savedPosts.length
             },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 console.log(prev);
                 return Object.assign({}, prev, {
-                    userPosts: [...prev.userPosts, ...fetchMoreResult.userPosts]
+                    savedPosts: [...prev.savedPosts, ...fetchMoreResult.savedPosts]
                 });
 
             }
@@ -211,7 +211,7 @@ function Hero() {
                             </div>
                         } 
                         <div className="hero__container__navbar">
-                            <HeroNavbar openPosts={true} username={username} />
+                            <HeroNavbar openPosts={false} username={username} />
                         </div>
                     </div>
 
@@ -220,9 +220,9 @@ function Hero() {
                             {
                                 loading ? <div>Loading...</div>
                                 : error ? <div>{error}</div>
-                                : data.userPosts.length >= 1 ?
+                                : data.savedPosts.length >= 1 ?
                                 <InfiniteScroll
-                                    dataLength={data.userPosts.length} //This is important field to render the next data
+                                    dataLength={data.savedPosts.length} //This is important field to render the next data
                                     next={onLoadMore}
                                     hasMore={true}
                                     loader={<h4>Loading...</h4>}
@@ -232,7 +232,7 @@ function Hero() {
                                         </p>
                                     }
                                 >
-                                    <Posts posts={data.userPosts} 
+                                    <Posts posts={data.savedPosts} 
                                         refetch={refetch} 
                                     />
                                 </InfiniteScroll>
@@ -248,4 +248,4 @@ function Hero() {
     )
 }
 
-export default Hero
+export default HeroSaved

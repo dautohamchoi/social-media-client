@@ -1,0 +1,50 @@
+.heroFollowers {
+    display: flex;
+    justify-content: center;
+}
+.heroFollowers__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50rem;
+    border: .1rem solid black;
+    border-radius: 1rem;
+    background: #ffffff;
+}
+.heroFollowers__header {
+    text-align: center;
+    position: relative;
+}
+.heroFollowers__header>h4 {
+    margin: .5rem;
+    padding: 1.5rem;
+    border-bottom: .1rem solid #c0c0c0;
+}
+.heroFollowers__cancel {
+    position: absolute;
+    top: .9rem;
+    right: 1rem;
+}
+.heroFollowers__cancel>button {
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 2.2rem;
+    padding: .7rem 1.1rem;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+.heroFollowers__cancel>button:hover {
+    background-color: rgb(194, 194, 194)
+}
+.heroFollowers__cancel>button:active {
+    transform: scale(0.93);
+}
+.heroFollowers__cancel>button:focus {
+    outline: none;
+}
+.heroFollowers__list {
+    list-style-type: none;
+    padding: 0;
+    margin: .5rem;
+}

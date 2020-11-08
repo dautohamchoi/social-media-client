@@ -9,8 +9,19 @@
 .heroStats>ul>li {
     list-style-type: none;
     margin-right: 3rem;
+    display: flex;
+    align-items: center;
 }
-.heroStats>ul>li>a {
-    text-decoration: none;
+.heroStats>ul>li>button {
     color: inherit;
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+.heroStats>ul>li>button:focus {
+    outline: none;
+}
+.heroStats>ul>li>button:active {
+    color: grey;
 }

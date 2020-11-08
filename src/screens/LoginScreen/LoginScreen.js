@@ -1,50 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './LoginScreen.css';
 import { Link } from 'react-router-dom';
-import { LOGIN_USER, IS_LOGGED_IN } from '../../queries/userQuery';
-import { useMutation, useApolloClient, useQuery } from '@apollo/client';
-import Cookie from 'js-cookie';
+import { LOGIN_USER,} from '../../queries/userQuery';
+import { useMutation } from '@apollo/client';
 
 
-function LoginScreen(props) {
-    const client = useApolloClient();
-    const token = localStorage.getItem('token');
-    console.log(token);
-    // const userInfo = Cookie.getJSON('userInfo');
+
+function LoginScreen() {
     
     const [userLogin, { loading, error }] = useMutation(LOGIN_USER, {
         onCompleted ({ userLogin }) {
-            // Cookie.set('userInfo', userLogin);
+
             if (userLogin.token) {
                 localStorage.setItem('token', userLogin.token);
                 localStorage.setItem('userInfo', JSON.stringify(userLogin))
-                props.history.push("/");
+                window.location.reload();
             } else {
                 alert('Wrong email or password.')
             }
-            
-            // client.write({ data: { isLoggedIn: true } });
-
-            // if (userLogin) return props.history.push("/");
             if (loading) return <p>Loading...</p>;  
             if (error) return <p>An error occurred</p>;
         }
-        // => {
-        //     console.log(loading);
-        //     console.log(data);
-        //     Cookie.set('userInfo', JSON.stringify(data));
-        //     // props.history.push("/");
-        // }
+
     });
 
-    useEffect(() => {
-        if (token) {
-            // if user login successfully, they cannot login again
-            props.history.push("/");
-        }
-    }, [token])
+
 
     return (
         <div className="loginScreen">
@@ -77,7 +59,7 @@ function LoginScreen(props) {
                     </Form>
                 </Formik>
                 <div>
-                    <p>Bạn chưa có tài khoản ?  <Link to="/register">Đăng ký</Link>
+                    <p>Bạn chưa có tài khoản ?  <Link to="/accounts/register">Đăng ký</Link>
                     </p>
                 </div>
             </div>

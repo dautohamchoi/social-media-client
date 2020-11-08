@@ -15,9 +15,6 @@
     cursor: pointer;
     font-size: inherit;
 }
-.postItem__icon {
-    color: #969696;
-}
 .postItem__header {
     display: flex;
 }
@@ -50,6 +47,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/* IMAGE */
+.postItem__imageContainer {
+    text-align: center;
+}
+.postItem__imagePost {
+    max-width: 100%;
 }
 
 .postItem__footer {

@@ -1,18 +1,18 @@
 import React from 'react'
 import Navbar from '../HomeScreen/components/Navbar/Navbar'
-import Hero from './Hero/Hero'
+import HeroSaved from './Hero/HeroSaved';
 import './ProfileScreen.css';
 
-function ProfileScreen() {
+function SavedProfileScreen() {
 
     return (
         <div className="profileScreen">
             <Navbar />
             <div className="profile__hero">
-                <Hero />
+                <HeroSaved />
             </div>
         </div>
     )
 }
 
-export default ProfileScreen
+export default SavedProfileScreen;

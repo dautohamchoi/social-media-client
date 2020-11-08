@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 const GET_POSTS = gql`
-    query {
-        posts {
+    query getPosts($skip: Int!, $limit: Int!) {
+        posts(skip: $skip, limit: $limit) {
             id
             imagePost
             user {
@@ -19,6 +19,7 @@ const GET_POSTS = gql`
             }
             comments {
               id
+              createdAt
               contentCmt
               likes {
                 id
@@ -34,6 +35,57 @@ const GET_POSTS = gql`
                 imageUser
               }
             }
+            bookmarks {
+              id
+              user {
+                id
+              }
+            }
+          }
+    }
+`;
+
+const GET_USER_POSTS = gql`
+    query getUserPosts($username: String!, $skip: Int!, $limit: Int!) {
+        userPosts(username: $username, skip: $skip, limit: $limit) {
+            id
+            imagePost
+            user {
+              name
+              imageUser
+            }
+            createdAt
+            contentPost
+            likes {
+              id
+              user {
+                id
+              }
+            }
+            comments {
+              id
+              createdAt
+              contentCmt
+              likes {
+                id
+                user {
+                  id
+                }
+              }
+              post {
+                id
+              }
+              user {
+                name
+                imageUser
+              }
+            }
+            bookmarks {
+              id
+              user {
+                id
+              }
+            }
           }
     }
 `;
@@ -45,6 +97,7 @@ const GET_POST_DETAIL = gql`
             imagePost
             user {
               name
+              imageUser
             }
             createdAt
             contentPost
@@ -73,26 +126,24 @@ const GET_POST_DETAIL = gql`
                 imageUser
               }
             }
-          }
+            bookmarks {
+              id
+              user {
+                id
+              }
+            }
+          } 
     }
 `;
 
 
 
 const CREATE_POST = gql`
-    mutation createPost($userId: ID!, $contentPost: String!) {
-      createPost(userId: $userId, contentPost: $contentPost) {
+    mutation createPost($username: String!, $contentPost: String!, $imagePost: String!) {
+      createPost(username: $username, contentPost: $contentPost, imagePost: $imagePost) {
+        id
         contentPost
         imagePost
-        comments {
-          contentCmt
-        }
-        likes {
-          id
-          user {
-            id
-          }
-        }
       }
     }
 `;
@@ -113,5 +164,56 @@ const UPDATE_POST = gql`
   }
 `;
 
+const GET_SAVED_POSTS = gql`
+  query getSavedPosts($userId: ID!, $skip: Int!, $limit: Int!) {
+      savedPosts(userId: $userId, skip: $skip, limit: $limit) {
+          id
+          imagePost
+          user {
+            name
+            imageUser
+          }
+          createdAt
+          contentPost
+          likes {
+            id
+            user {
+              id
+            }
+          }
+          comments {
+            id
+            createdAt
+            contentCmt
+            likes {
+              id
+              user {
+                id
+              }
+            }
+            post {
+              id
+            }
+            user {
+              name
+              imageUser
+            }
+          }
+          bookmarks {
+            id
+            user {
+              id
+          }
+        }
+    }
+}
+`;
 
-export { GET_POSTS, GET_POST_DETAIL, CREATE_POST, DELETE_POST, UPDATE_POST };
+export { GET_POSTS,
+   GET_USER_POSTS,
+   GET_POST_DETAIL,
+   CREATE_POST, 
+   DELETE_POST, 
+   UPDATE_POST,
+   GET_SAVED_POSTS  
+};

@@ -1,10 +1,7 @@
-/* .suggestion {
-    position: fixed;
-    top: 7rem;
-    right: 0;
-    z-index: 1;
-    width: 40rem;
-} */
+.suggestion {
+    min-width: 36rem;
+    max-width: 40rem;
+}
 .suggestion__top {
     border-radius: 2rem;
     margin: 2rem 1.5rem 1.5rem 1.5rem;
@@ -20,7 +17,7 @@
     padding: 1rem;
 }
 .suggestion__title__line {
-    width: 50%;
+    min-width: 40%;
 }
 .suggestion__title__line hr {
     padding-top: 1rem;
@@ -65,3 +62,4 @@
 .suggestion__friends button:hover {
     filter: brightness(1.2);
 }
+

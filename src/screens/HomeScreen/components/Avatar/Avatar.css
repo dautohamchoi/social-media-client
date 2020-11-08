@@ -26,7 +26,7 @@
     background-color: gray;
     border-radius: 50%;
     max-height: 15rem;
-    max-width: 15rem;
+    max-width: 20rem;
     width: 100%;
     height: 100%;
     display: flex;
@@ -36,6 +36,7 @@
 .avatar__circle img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 .avatar__initials.bigSize {
     font-size: 6rem;

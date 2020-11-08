@@ -1,3 +1,11 @@
+.hero__wrap {
+    width: 100%;
+    background-color: #f5f3f3;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    border-top-left-radius: 2rem;
+    height: 100%;
+}
 .hero__container {
     display: flex;
     align-items: center;
@@ -23,6 +31,17 @@
 .hero__container__navbar {
     display: flex;
 }
+/* POSTS CONTAINER */
+.hero__posts {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero__posts__container {
+    width: 75rem;
+}
+
 /* MODAL HERO EDIT */
 .hero__edit {
     position: fixed;

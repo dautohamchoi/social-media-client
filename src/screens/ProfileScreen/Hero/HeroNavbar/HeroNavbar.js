@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTable, faBookmark } from '@fortawesome/free-solid-svg-icons'
 import './HeroNavbar.css';
 
-function HeroNavbar() {
+function HeroNavbar({ openPosts, username }) {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const name  = userInfo.name;
 
     function HeroNavbarItem(props) {
         return (
@@ -20,14 +22,24 @@ function HeroNavbar() {
     return (
         <div>
             <div className="heroNavbar">
-                <HeroNavbarItem 
-                    icon={<FontAwesomeIcon icon={faTable} />}
-                    title="BÀI VIẾT"
-                />
-                <HeroNavbarItem 
-                    icon={<FontAwesomeIcon icon={faBookmark} />}
-                    title="ĐÃ LƯU"
-                />
+                <div style={openPosts ? { color: "#ff8686", borderTop: ".3rem solid #ff8686" } : { color: "#969696" } }>
+                    <HeroNavbarItem 
+                        icon={<FontAwesomeIcon icon={faTable} />}
+                        title="BÀI VIẾT"
+                        link={`/${username}`}
+                    />
+                </div>
+                {
+                    username === name ?
+                    <div style={!openPosts ? { color: "#ff8686", borderTop: ".3rem solid #ff8686" } : { color: "#969696" } }>
+                        <HeroNavbarItem 
+                            icon={<FontAwesomeIcon icon={faBookmark} />}
+                            title="ĐÃ LƯU"
+                            link={`/${name}/saved`}
+                        />
+                    </div>
+                    : null
+                }
             </div>
         </div>
     )

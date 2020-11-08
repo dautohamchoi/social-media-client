@@ -12,6 +12,8 @@ import Status from '../../Status/Status';
 import { ADD_LIKE, REMOVE_LIKE } from '../../../../../../../queries/likeQuery';
 import Avatar from '../../../../Avatar/Avatar';
 import { Link } from 'react-router-dom';
+import { ADD_BOOKMARK, REMOVE_BOOKMARK } from '../../../../../../../queries/bookmarkQuery';
+import Progress from '../../Progress/Progress';
 
 function PostItem({ post, refetch }) {
     const pathname = window.location.pathname
@@ -20,9 +22,10 @@ function PostItem({ post, refetch }) {
     const [openUpdate, setOpenUpdate] = useState(false)
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const userId = userInfo.id;
-    const likedUser = post.likes.find(like => like.user.id === userId);
-    const [like, setLike] = useState(!!likedUser);
-    
+    const likedPost = post.likes.find(like => like.user.id === userId);
+    const savedPost = post.bookmarks.find(bookmark => bookmark.user.id === userId);
+    const [like, setLike] = useState(!!likedPost);
+    const [bookmark, setBookmark] = useState(!!savedPost);
 
 
     const [deletePost] = useMutation(DELETE_POST, {
@@ -31,6 +34,7 @@ function PostItem({ post, refetch }) {
     const [updatePost] = useMutation(UPDATE_POST, {
         onCompleted: () => refetch()
     });
+
     const [addLike] = useMutation(ADD_LIKE, {
         onCompleted: () => {
             refetch();
@@ -44,6 +48,19 @@ function PostItem({ post, refetch }) {
         }
     });
 
+    const [addBookmark] = useMutation(ADD_BOOKMARK, {
+        onCompleted: () => {
+            refetch();
+            setBookmark(true);
+        }
+    });
+    const [removeBookmark] = useMutation(REMOVE_BOOKMARK, {
+        onCompleted: () => {
+            refetch();
+            setBookmark(false);
+        }
+    });
+
     const deleteHandler = (id) => {;
         if (window.confirm("Bạn thực sự muốn xoá bài viết này ?")) {
             deletePost({ variables: { postId: id } });
@@ -53,8 +70,18 @@ function PostItem({ post, refetch }) {
         if (!like) {
             addLike({ variables: { postId: post.id, userId: userId }});
         } else {
-            if (likedUser) {
-                removeLike({ variables: { likeId: likedUser.id }});
+            if (likedPost) {
+                removeLike({ variables: { likeId: likedPost.id }});
+            }
+        }
+    }
+
+    const bookmarkHandler = () => {
+        if (!bookmark) {
+            addBookmark({ variables: { postId: post.id, userId: userId }});
+        } else {
+            if (savedPost) {
+                removeBookmark({ variables: { bookmarkId: savedPost.id }});
             }
         }
     }
@@ -93,8 +120,12 @@ function PostItem({ post, refetch }) {
             </div>
             {
                 post.imagePost && 
-                <div>
-                    <img alt="post_img" src="/post.jpg"/>
+                <div className="postItem__imageContainer">
+                    <img 
+                        alt="post_img" 
+                        src={post.imagePost}
+                        className="postItem__imagePost" 
+                    />
                 </div>
             }
             <div className="postItem__footer">
@@ -115,8 +146,11 @@ function PostItem({ post, refetch }) {
                     </button>
                 </div>
                 <div className="postItem__footer__right">
-                    <button>
-                        <FontAwesomeIcon icon={faBookmark} className="postItem__icon" />
+                    <button
+                        onClick={bookmarkHandler}
+                        style={ bookmark ? { color: "#ff8686" } : { color: "#969696" } }
+                    >
+                        <FontAwesomeIcon icon={faBookmark} />
                     </button>
                 </div>
             </div>

@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import { ApolloProvider, InMemoryCache, ApolloClient, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
+import { BrowserRouter } from 'react-router-dom';
+import { createUploadLink } from 'apollo-upload-client';
 
 // const cache = new InMemoryCache({
 //   typePolicies: {
@@ -39,18 +40,24 @@ const authLink = setContext((_, { headers }) => {
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache
+  uri: '/graphql',
+  cache,
+  link: createUploadLink(),
 });
 
-
+// const client = new ApolloClient({
+//   uri: authLink.concat(httpLink),
+//   cache
+// });
 
 
 
 ReactDOM.render(
   <React.StrictMode>
       <ApolloProvider client={client}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

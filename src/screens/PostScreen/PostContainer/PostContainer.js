@@ -23,7 +23,6 @@ function PostContainer(props) {
         <div className="homeContainer">
             <div className="homeContainer__sidebar">
                 <Sidebar />
-                <Messenger />
             </div>
             <div className="homeContainer__newsFeed">
                 {
